@@ -9,7 +9,7 @@ FROM openjdk:8-jdk-stretch
 COPY --from=0 /usr/local/apr/lib /usr/lib
 COPY sample-app /sample-app
 WORKDIR /sample-app
-RUN ./mvnw -B -q install
+RUN sh ./mvnw -B -q install
 RUN apt-get -qq update && apt-get -yqq install libapr1 libssl1.0.2
 RUN java -jar target/demo-0.0.1-SNAPSHOT.jar
 FROM scratch
